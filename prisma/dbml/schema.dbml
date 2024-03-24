@@ -42,7 +42,7 @@ Table Member {
 Table Channel {
   id String [pk]
   name String [not null]
-  type ChannnelType [not null, default: 'TEXT']
+  type ChannelType [not null, default: 'TEXT']
   profileId String [not null]
   profile Profile [not null]
   serverId String [not null]
@@ -57,7 +57,7 @@ Enum MemberRole {
   GUEST
 }
 
-Enum ChannnelType {
+Enum ChannelType {
   TEXT
   AUDIO
   VIDEO
