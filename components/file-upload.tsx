@@ -8,9 +8,11 @@ interface FileUPloadProps {
   onChange: (url?: string) => void;
   value: string;
   endpoint: "messageFile" | "serverImage";
+  onUploadBegin?: () => void,
+  onClientUploadComplete?: () => void
 }
 
-const FileUpload = ({ endpoint, onChange, value }: FileUPloadProps) => {
+const FileUpload = ({ endpoint, onChange, value, onUploadBegin, onClientUploadComplete }: FileUPloadProps) => {
   const fileType = value?.split(".").pop();
 
   if (value && fileType !== "pdf") {
@@ -30,7 +32,11 @@ const FileUpload = ({ endpoint, onChange, value }: FileUPloadProps) => {
     <>
       <UploadDropzone
         endpoint={endpoint}
+        onUploadBegin={() => {
+            onUploadBegin?.()          
+        }}
         onClientUploadComplete={(res) => {
+          onClientUploadComplete?.()
           onChange(res?.[0]?.url);
         }}
         onUploadError={(error) => console.log(error)}

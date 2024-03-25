@@ -19,7 +19,7 @@ Table Server {
   id String [pk]
   name String [not null]
   imageUrl String [not null]
-  inviteCode String [not null]
+  inviteCode String [unique, not null]
   profileId String [not null]
   profile Profile [not null]
   members Member [not null]

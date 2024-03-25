@@ -28,6 +28,8 @@ const formSchema = z.object({
   }),
 });
 const CreateServerModal = () => {
+  const [isUploading, setIsUploading] = useState(false);
+
   const { isOpen, onClose, type } = useModal();
   const router = useRouter();
 
@@ -41,7 +43,7 @@ const CreateServerModal = () => {
     },
   });
 
-  const isLoading = form.formState.isSubmitting;
+  const isLoading = form.formState.isSubmitting || isUploading;
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     try {
@@ -78,8 +80,13 @@ const CreateServerModal = () => {
                   name="imageUrl"
                   render={({ field }) => (
                     <FormItem>
-                      <FileUpload endpoint="serverImage" value={field.value} onChange={field.onChange} />
-                      <FormControl></FormControl>
+                      <FileUpload
+                        endpoint="serverImage"
+                        onUploadBegin={() => setIsUploading(true)}
+                        onClientUploadComplete={() => setIsUploading(false)}
+                        value={field.value}
+                        onChange={field.onChange}
+                      />
                     </FormItem>
                   )}
                 />
