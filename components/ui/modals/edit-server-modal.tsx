@@ -40,17 +40,10 @@ const EditServerModal = () => {
   const form = useForm({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      name: "",
-      imageUrl: "",
+      name: server?.name || "",
+      imageUrl: server?.imageUrl || "",
     },
   });
-
-  useEffect(() => {
-    if (server) {
-      form.setValue("name", server.name);
-      form.setValue("imageUrl", server.imageUrl);
-    }
-  }, [server, form]);
 
   const isLoading = form.formState.isSubmitting || isUploading;
 
