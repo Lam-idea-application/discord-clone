@@ -64,7 +64,7 @@ const ServerHeader = ({ server, role }: ServerHeaderProps) => {
         {isAdmin && (
           <DropdownMenuItem
             onClick={() => onOpen("deleteServer", { server })}
-            className="px-3 py-2 text-sm cursor-pointer text-red-500 dark:text-red-400">
+            className="px-3 py-2 text-sm cursor-pointer text-rose-500 dark:text-rose-400">
             Delete Server
             <Trash className="h-4 w-4 ml-auto" />
           </DropdownMenuItem>
@@ -72,7 +72,7 @@ const ServerHeader = ({ server, role }: ServerHeaderProps) => {
         {!isAdmin && (
           <DropdownMenuItem
             onClick={() => onOpen("leaveServer", { server })}
-            className="px-3 py-2 text-sm cursor-pointer text-red-500 dark:text-red-400">
+            className="px-3 py-2 text-sm cursor-pointer text-rose-500 dark:text-rose-400">
             Leave Server
             <LogOut className="h-4 w-4 ml-auto" />
           </DropdownMenuItem>
