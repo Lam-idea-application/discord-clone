@@ -34,10 +34,6 @@ const CreateChannelModal = () => {
 
   const isModalOpen = isOpen && type === "createChannel";
 
-  useEffect(() => {
-    console.log("I re-render");
-  }, []);
-
   const form = useForm({
     resolver: zodResolver(formSchema),
     defaultValues: {
