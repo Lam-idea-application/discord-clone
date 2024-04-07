@@ -34,10 +34,6 @@ const EditChannelModal = () => {
 
   const isModalOpen = isOpen && type === "editChannel";
 
-  useEffect(() => {
-    console.log("I re-render");
-  }, []);
-
   const form = useForm({
     resolver: zodResolver(formSchema),
     defaultValues: {
