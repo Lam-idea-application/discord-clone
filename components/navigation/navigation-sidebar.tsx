@@ -5,7 +5,7 @@ import { redirect } from "next/navigation";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Separator } from "@/components/ui/separator";
 import NavigationItem from "./navigation-item";
-import { ModeToggle } from "../ui/mode-toggle";
+import { ModeToggle } from "../mode-toggle";
 import { UserButton } from "@clerk/nextjs";
 
 const NavigationSidebar = async () => {
