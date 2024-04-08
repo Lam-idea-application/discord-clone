@@ -45,7 +45,7 @@ const InitialModal = () => {
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     try {
       await axios.post("/api/servers", values);
-      
+
       form.reset();
       router.refresh();
       window.location.reload();
@@ -80,8 +80,9 @@ const InitialModal = () => {
                   name="imageUrl"
                   render={({ field }) => (
                     <FormItem>
-                      <FileUpload endpoint="serverImage" value={field.value} onChange={field.onChange} />
-                      <FormControl></FormControl>
+                      <FormControl>
+                        <FileUpload endpoint="serverImage" value={field.value} onChange={field.onChange} />
+                      </FormControl>
                     </FormItem>
                   )}
                 />
