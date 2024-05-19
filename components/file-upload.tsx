@@ -8,8 +8,8 @@ interface FileUPloadProps {
   onChange: (url?: string) => void;
   value: string;
   endpoint: "messageFile" | "serverImage";
-  onUploadBegin?: () => void,
-  onClientUploadComplete?: () => void
+  onUploadBegin?: () => void;
+  onClientUploadComplete?: () => void;
 }
 
 const FileUpload = ({ endpoint, onChange, value, onUploadBegin, onClientUploadComplete }: FileUPloadProps) => {
@@ -29,13 +29,14 @@ const FileUpload = ({ endpoint, onChange, value, onUploadBegin, onClientUploadCo
   }
 
   if (value && fileType === "pdf") {
-    return <div className="relative flex items-center p-2 mt-2 rounded-md bg-background/10">
-        <FileIcon  className="h-10 w-10 fill-indigo-200 stroke-indigo-400"/>
-        <a href={value}
-            target="_blank" 
-            rel="noopener noreferrer"
-            className="ml-2 text-sm text-indigo-500 dark:text-indigo-400 hover:underline"
-        >
+    return (
+      <div className="relative flex items-center p-2 mt-2 rounded-md bg-background/10">
+        <FileIcon className="h-10 w-10 fill-indigo-200 stroke-indigo-400" />
+        <a
+          href={value}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="ml-2 text-sm text-indigo-500 dark:text-indigo-400 hover:underline">
           {value}
         </a>
         <button
@@ -43,7 +44,8 @@ const FileUpload = ({ endpoint, onChange, value, onUploadBegin, onClientUploadCo
           className="bg-rose-500 text-white p-1 rounded-full absolute -top-2 -right-2 shadow-sm">
           <X className="w-4 h-4" />
         </button>
-    </div>
+      </div>
+    );
   }
 
   return (
@@ -51,10 +53,10 @@ const FileUpload = ({ endpoint, onChange, value, onUploadBegin, onClientUploadCo
       <UploadDropzone
         endpoint={endpoint}
         onUploadBegin={() => {
-            onUploadBegin?.()          
+          onUploadBegin?.();
         }}
         onClientUploadComplete={(res) => {
-          onClientUploadComplete?.()
+          onClientUploadComplete?.();
           onChange(res?.[0]?.url);
         }}
         onUploadError={(error) => console.log(error)}
